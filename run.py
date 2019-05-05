@@ -2,13 +2,16 @@ import os
 import importlib
 
 from flask import Flask
+from config import Configuration
+from flask import render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='views')
+app.config.from_object(Configuration)
 
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return render_template('site/index.html')
 
 
 def importController(controller):
