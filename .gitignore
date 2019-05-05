@@ -1,0 +1,4 @@
+#  pycharm files
+.idea/
+# virtualenv directory
+venv/
