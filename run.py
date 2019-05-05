@@ -10,8 +10,9 @@ app.config.from_object(Configuration)
 
 
 @app.route('/')
-def hello_world():
-    return render_template('site/index.html')
+def index():
+    name = 'Zippo'
+    return render_template('site/index.html', name=name)
 
 
 def importController(controller):
@@ -22,6 +23,10 @@ def importController(controller):
                 name = elem.name.replace('.py', '')
                 if name == controller:
                     importlib.import_module(f'controllers.{name}')
+
+@app.route('/home')
+def home():
+    return render_template('site/home.html')
 
 
 @app.route('/<page1>')
