@@ -1,2 +1,2 @@
-#class Configuration(object):
-    #DEBUG = True
+class Configuration(object):
+    DEBUG = True

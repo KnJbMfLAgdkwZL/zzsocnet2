@@ -2,9 +2,14 @@ import os
 import importlib
 
 from flask import Flask
+from config import Configuration
+from controllers.govno import xyita
 
-#app = Flask(__name__, template_folder='views')
+
 app = Flask(__name__)
+app.config.from_object(Configuration)
+
+app.register_blueprint(xyita, url_prefix='/govno')
 
 '''
 from config import Configuration
