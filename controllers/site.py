@@ -1,13 +1,20 @@
-print('site_controller')
+from flask import render_template
+from flask import request
 
 
 class site:
-    """docstring"""
-
     def __init__(self):
-        """Constructor"""
-        print('site_controller Constructor')
-        pass
+        print('Constructor site')
 
+    def __del__(self):
+        print('Destructor site')
 
-site()
+    def index(self):
+        print('index site')
+        name = 'Zippo'
+
+        name = request.args.get('name')
+        
+        # return 'Hello From site index'
+
+        return render_template('./site/index.html', name=name)

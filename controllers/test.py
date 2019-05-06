@@ -1,13 +1,10 @@
-print('test_controller')
-
 
 class test:
-    """docstring"""
-
     def __init__(self):
-        """Constructor"""
-        print('test_controller Constructor')
-        pass
+        print('Constructor test')
 
+    def __del__(self):
+        print('Destructor test')
 
-test()
+    def index(self):
+        return 'index test'
