@@ -11,10 +11,12 @@ class site:
 
     def index(self):
         print('index site')
-
-        name = request.args.get('name')
-        
-        # return 'Hello From site index'
-
-        # return render_template('./site/index.html', name=name)
         return render_template('site/index.html')
+
+    def home(self):
+        print('home site')
+        return render_template('site/home.html')
+
+    def page404(self):
+        print('home site')
+        return render_template('site/page404.html')

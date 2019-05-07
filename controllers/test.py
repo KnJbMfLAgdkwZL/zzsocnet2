@@ -1,3 +1,5 @@
+from flask import render_template
+
 
 class test:
     def __init__(self):
@@ -7,4 +9,5 @@ class test:
         print('Destructor test')
 
     def index(self):
-        return 'index test'
+        print('index test')
+        return render_template('test/index.html')

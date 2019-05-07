@@ -3,36 +3,15 @@ import importlib
 
 from flask import Flask
 from config import Configuration
-from controllers.govno import xyita
-
 
 app = Flask(__name__)
 app.config.from_object(Configuration)
 
-app.register_blueprint(xyita, url_prefix='/govno')
-
-'''
-from config import Configuration
-app.config.from_object(Configuration)
-'''
-
-'''
-from flask import render_template
-
-@app.route('/')
-def index():
-    name = 'Zippo'
-    return render_template('site/index.html', name=name)
-
-
-@app.route('/home')
-def home():
-    return render_template('site/home.html')
-'''
-
 
 def importController(controller):
-    dir = os.scandir('./controllers')
+    dirpath = os.path.dirname(__file__)
+    filepath = os.path.join(dirpath, 'controllers')
+    dir = os.scandir(filepath)
     for elem in dir:
         if os.path.isfile(elem):
             if elem.name.endswith('.py'):
@@ -68,34 +47,5 @@ def route_2(controller='site', method='index'):
     return html
 
 
-# app.debug = True
 if __name__ == '__main__':
     app.run()
-
-'''
-
-#import controllers.test
-#controllers.test.test()
-#aa = eval('controllers.test.test')()
-
-#from controllers import test
-#test.test()
-#aa = eval('test.test')()
-
-#module = __import__('controllers.test')
-#instance = module.test.test()
-#aa = eval('module.test.test')()
-
-#module = importlib.import_module(f'controllers.test')
-#module.test()
-#aa = eval('module.test')()
-
-
-
-#from controllers.site import *
-#site()
-
-#import controllers.site
-#controllers.site.site()
-
-'''
