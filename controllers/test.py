@@ -1,13 +1,7 @@
+from _core.controller import controller
 from flask import render_template
 
 
-class test:
-    def __init__(self):
-        print('Constructor test')
-
-    def __del__(self):
-        print('Destructor test')
-
+class test(controller):
     def index(self):
-        print('index test')
         return render_template('test/index.html')

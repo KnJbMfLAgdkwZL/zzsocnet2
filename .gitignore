@@ -3,3 +3,6 @@
 # virtualenv directory
 venv/
 __pycache__/
+*__pycache__
+*__pycache__*
+__pycache__

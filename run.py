@@ -22,34 +22,34 @@ def importController(controller):
                     return instance
     return False
 
-from controllers.site import site
-@app.route('/test')
-def pizza():
-    return site.test()
+
+def load404():
+    from controllers.site import site
+    return site().page404()
 
 
 @app.route('/')
 @app.route('/<controller>')
 @app.route('/<controller>/')
 def route_1(controller='site'):
-    html = '404'
     instance = importController(controller)
     if instance:
         method = 'index'
         if hasattr(instance, method):
-            html = eval(f'instance.{method}')()
-    return html
+            return eval(f'instance.{method}')()
+
+    return load404(), 404
 
 
 @app.route('/<controller>/<method>')
 @app.route('/<controller>/<method>/')
 def route_2(controller='site', method='index'):
-    html = '404'
     instance = importController(controller)
     if instance:
         if hasattr(instance, method):
-            html = eval(f'instance.{method}')()
-    return html
+            return eval(f'instance.{method}')()
+
+    return load404(), 404
 
 
 if __name__ == '__main__':
