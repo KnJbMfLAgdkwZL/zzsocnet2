@@ -20,3 +20,6 @@ class site:
     def page404(self):
         print('home site')
         return render_template('site/page404.html')
+
+    def test():
+        return 'asd'

@@ -22,6 +22,11 @@ def importController(controller):
                     return instance
     return False
 
+from controllers.site import site
+@app.route('/test')
+def pizza():
+    return site.test()
+
 
 @app.route('/')
 @app.route('/<controller>')
