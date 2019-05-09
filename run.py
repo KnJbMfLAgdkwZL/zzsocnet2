@@ -29,8 +29,8 @@ def load404():
 
 
 @app.route('/')
-@app.route('/<controller>')
-@app.route('/<controller>/')
+@app.route('/<controller>', methods=['GET', 'POST'])
+@app.route('/<controller>/', methods=['GET', 'POST'])
 def route_1(controller='site'):
     instance = importController(controller)
     if instance:
@@ -41,8 +41,8 @@ def route_1(controller='site'):
     return load404(), 404
 
 
-@app.route('/<controller>/<method>')
-@app.route('/<controller>/<method>/')
+@app.route('/<controller>/<method>', methods=['GET', 'POST'])
+@app.route('/<controller>/<method>/', methods=['GET', 'POST'])
 def route_2(controller='site', method='index'):
     instance = importController(controller)
     if instance:

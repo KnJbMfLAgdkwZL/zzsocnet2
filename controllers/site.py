@@ -12,3 +12,20 @@ class site(controller):
 
     def page404(self):
         return render_template('site/page404.html')
+
+    def login(self):
+        errors = ''
+        if request.method == 'POST':
+
+            login = request.form.get('login')
+            if not login:
+                errors += 'Login false '
+
+            password = request.form.get('password')
+            if not password:
+                errors += 'Password false'
+
+            if login and password:
+                errors += f'All ok you can login ({login}, {password})'
+
+        return render_template('site/login.html', errors=errors)
