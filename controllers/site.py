@@ -29,3 +29,26 @@ class site(controller):
                 errors += f'All ok you can login ({login}, {password})'
 
         return render_template('site/login.html', errors=errors)
+
+    def test(self):
+        # Пример запроса:
+        from model.user import user
+        all = user.query.all()
+        print(all)
+        print(all[0].password)
+
+        r = user.query.filter(user.login == 'admin').first()
+        print(r)
+
+        r = user.query.first()
+        print(r)
+
+        '''
+        # Вот так можно добавить новые записи в базу данных
+        from _core.model import db_session
+        u = user('admin4', '123456')
+        db_session.add(u)
+        db_session.commit()
+        '''
+
+        return 'test'

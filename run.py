@@ -52,5 +52,13 @@ def route_2(controller='site', method='index'):
     return load404(), 404
 
 
+from _core.model import db_session
+
+
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    db_session.remove()
+
+
 if __name__ == '__main__':
     app.run()
